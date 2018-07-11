@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<style type="text/css">
+        .button {
+            padding: 10px; 
+            position: absolute; 
+            background-color: lightgray;
+            width: 100px;
+            height: 50px;
+            border-radius: 10px;
+            border: 1px solid darkgray;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333333;
+        }
+
+        .button:hover {
+            background-color: lightgreen;
+        }
+
+        .predictive-item-hover {
+            background-color: lightgreen;
+        }
+
+        #container{
+            width: 900px;
+            height: 550px;
+            margin: 20px auto;
+            background-color: #f2f2f2;
+            position: relative;
+            border-radius: 20px;
+        }
+	</style>
+</head>
+<body>
+<h1>Predictive buttons sample</h1>
+<div id="container">
+    <input type="button" class="button predictive-item" style="left:100px; top:100px;"/>
+    <input type="button" class="button predictive-item" style="left:300px; top:100px;"/>
+    <input type="button" class="button predictive-item" style="left:500px; top:100px;"/>
+    <input type="button" class="button predictive-item" style="left:700px; top:100px;"/>
+
+    <input type="button" class="button predictive-item" style="left:100px; top:250px;"/>
+    <input type="button" class="button predictive-item" style="left:300px; top:250px;"/>
+    <input type="button" class="button predictive-item" style="left:500px; top:250px;"/>
+    <input type="button" class="button predictive-item" style="left:700px; top:250px;"/>
+
+    <input type="button" class="button predictive-item" style="left:100px; top:400px;"/>
+    <input type="button" class="button predictive-item" style="left:300px; top:400px;"/>
+    <input type="button" class="button predictive-item" style="left:500px; top:400px;"/>
+    <input type="button" class="button predictive-item" style="left:700px; top:400px;"/>
+</div>
+
+<script type="text/javascript" src="../dist/predictive-ui.js"></script>
+</body>
+</html>
