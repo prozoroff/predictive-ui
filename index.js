@@ -30,16 +30,11 @@ let globalX,
 	globalY;
 
 const addHoverClass = target => {
-    if (target.className.indexOf(hoverClass) === -1) {
-        target.className += " " + hoverClass;
-    }
+    target.classList.add(hoverClass);
 }
 
 const removeHoverClass = target => {
-    const className = target.className;
-    if (className.indexOf(hoverClass) > -1) {
-        target.className = className.replace(hoverClass, '');
-    }
+    target.classList.remove(hoverClass);
 }
 
 const mousemoveHander = e => {
