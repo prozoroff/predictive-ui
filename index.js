@@ -1,11 +1,16 @@
-const particleFilter = require('particle-filter');
-
-const particlesNumber = 50,
-	distributionSize = 10,
-	predictionFactor = 10,
-    predictiveClass = 'predictive-item',
-    hoverClass = 'predictive-item-hover',
-    predictiveTimeout = 1000;
+import particleFilter from 'particle-filter';
+import {
+    addPredictiveHoverRules,
+    addHoverClass,
+    removeHoverClass
+    } from './styles';
+import {
+    particlesNumber,
+    distributionSize,
+    predictionFactor,
+    predictiveTimeout,
+    predictiveClass
+} from './constants';
 	
 const elements = document.getElementsByClassName(predictiveClass);
 
@@ -24,20 +29,17 @@ for(let i = 0, l = elements.length; i < l; i++){
 	coordinatesCheckers.push((x,y) => isIn(x,y,rect));
 }
 
+addPredictiveHoverRules();
+
 const filter = new particleFilter(particlesNumber, 2, distributionSize);
 
 let globalX, 
 	globalY;
 
-const addHoverClass = target => {
-    target.classList.add(hoverClass);
-}
-
-const removeHoverClass = target => {
-    target.classList.remove(hoverClass);
-}
-
 const mousemoveHander = e => {
+
+    let x, y;
+
     if (document.all)  { 
       x = event.x + document.body.scrollLeft; 
       y = event.y + document.body.scrollTop; 

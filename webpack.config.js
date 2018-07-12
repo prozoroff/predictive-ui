@@ -4,5 +4,9 @@ module.exports = {
 	output: {
 		path: __dirname + "/dist",
 		filename: "predictive-ui.js"
+	},
+	mode: "development",
+	optimization: {
+		minimize: false
 	}
 }
