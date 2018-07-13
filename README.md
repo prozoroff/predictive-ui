@@ -9,6 +9,6 @@ Predictive behavior for html elements
 
 As usual HTML boolean attribute
 
-```
+```html
 <button predictive-item>Predictve button</button>
 ```
