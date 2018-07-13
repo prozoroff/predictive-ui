@@ -3,7 +3,7 @@
 <head>
 	<title></title>
 	<style type="text/css">
-        .button {
+        #container input {
             position: absolute; 
             background: #ddd;
             color: #444;
@@ -27,7 +27,7 @@
             color: #333333;
         }
 
-        .button:hover {
+        #container input:hover {
             background-color: lightgreen;
         }
 
@@ -45,18 +45,17 @@
 <body>
 <h1>Predictive buttons sample</h1>
 <div id="container">
-    <input type="button" class="button predictive-item" style="left:150px; top:150px;" value="Button Item 1"/>
-    <input type="button" class="button predictive-item" style="left:550px; top:150px;" value="Button Item 2"/>
-    <input type="button" class="button predictive-item" style="left:150px; top:350px;" value="Button Item 3"/>
-    <input type="button" class="button predictive-item" style="left:550px; top:350px;" value="Button Item 4"/>
+    <input type="button" style="left:150px; top:150px;" value="Button Item 1" predictive-item/>
+    <input type="button" style="left:550px; top:150px;" value="Button Item 2" predictive-item/>
+    <input type="button" style="left:150px; top:350px;" value="Button Item 3" predictive-item/>
+    <input type="button" style="left:550px; top:350px;" value="Button Item 4" predictive-item/>
 </div>
 
-<div style="background: #f8f8f8; ;width:800px;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em; margin: 40px auto;"><pre style="margin: 0; line-height: 125%">    <span style="color: #008000; font-weight: bold">&lt;input</span> <span style="color: #7D9029">type=</span><span style="color: #BA2121">&quot;button&quot;</span> <span style="color: #7D9029">class=</span><span style="color: #BA2121">&quot;button predictive-item&quot;</span> <span style="color: #7D9029">style=</span><span style="color: #BA2121">&quot;left:150px; top:150px;&quot;</span> <span style="color: #7D9029">value=</span><span style="color: #BA2121">&quot;Button Item 1&quot;</span><span style="color: #008000; font-weight: bold">/&gt;</span>
-    <span style="color: #008000; font-weight: bold">&lt;input</span> <span style="color: #7D9029">type=</span><span style="color: #BA2121">&quot;button&quot;</span> <span style="color: #7D9029">class=</span><span style="color: #BA2121">&quot;button predictive-item&quot;</span> <span style="color: #7D9029">style=</span><span style="color: #BA2121">&quot;left:550px; top:150px;&quot;</span> <span style="color: #7D9029">value=</span><span style="color: #BA2121">&quot;Button Item 2&quot;</span><span style="color: #008000; font-weight: bold">/&gt;</span>
-    <span style="color: #008000; font-weight: bold">&lt;input</span> <span style="color: #7D9029">type=</span><span style="color: #BA2121">&quot;button&quot;</span> <span style="color: #7D9029">class=</span><span style="color: #BA2121">&quot;button predictive-item&quot;</span> <span style="color: #7D9029">style=</span><span style="color: #BA2121">&quot;left:150px; top:350px;&quot;</span> <span style="color: #7D9029">value=</span><span style="color: #BA2121">&quot;Button Item 3&quot;</span><span style="color: #008000; font-weight: bold">/&gt;</span>
-    <span style="color: #008000; font-weight: bold">&lt;input</span> <span style="color: #7D9029">type=</span><span style="color: #BA2121">&quot;button&quot;</span> <span style="color: #7D9029">class=</span><span style="color: #BA2121">&quot;button predictive-item&quot;</span> <span style="color: #7D9029">style=</span><span style="color: #BA2121">&quot;left:550px; top:350px;&quot;</span> <span style="color: #7D9029">value=</span><span style="color: #BA2121">&quot;Button Item 4&quot;</span><span style="color: #008000; font-weight: bold">/&gt;</span>
+<div style="background: #f8f8f8; width:700px;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em; margin: 40px auto;"><pre style="margin: 0; line-height: 125%;">    <span style="color: #008000; font-weight: bold">&lt;input</span> <span style="color: #7D9029">type=</span><span style="color: #BA2121">&quot;button&quot;</span> <span style="color: #7D9029">style=</span><span style="color: #BA2121">&quot;left:150px; top:150px;&quot;</span> <span style="color: #7D9029">value=</span><span style="color: #BA2121">&quot;Button Item 1&quot;</span> <span style="color: #7D9029">predictive-item</span><span style="color: #008000; font-weight: bold">/&gt;</span>
+    <span style="color: #008000; font-weight: bold">&lt;input</span> <span style="color: #7D9029">type=</span><span style="color: #BA2121">&quot;button&quot;</span> <span style="color: #7D9029">style=</span><span style="color: #BA2121">&quot;left:550px; top:150px;&quot;</span> <span style="color: #7D9029">value=</span><span style="color: #BA2121">&quot;Button Item 2&quot;</span> <span style="color: #7D9029">predictive-item</span><span style="color: #008000; font-weight: bold">/&gt;</span>
+    <span style="color: #008000; font-weight: bold">&lt;input</span> <span style="color: #7D9029">type=</span><span style="color: #BA2121">&quot;button&quot;</span> <span style="color: #7D9029">style=</span><span style="color: #BA2121">&quot;left:150px; top:350px;&quot;</span> <span style="color: #7D9029">value=</span><span style="color: #BA2121">&quot;Button Item 3&quot;</span> <span style="color: #7D9029">predictive-item</span><span style="color: #008000; font-weight: bold">/&gt;</span>
+    <span style="color: #008000; font-weight: bold">&lt;input</span> <span style="color: #7D9029">type=</span><span style="color: #BA2121">&quot;button&quot;</span> <span style="color: #7D9029">style=</span><span style="color: #BA2121">&quot;left:550px; top:350px;&quot;</span> <span style="color: #7D9029">value=</span><span style="color: #BA2121">&quot;Button Item 4&quot;</span> <span style="color: #7D9029">predictive-item</span><span style="color: #008000; font-weight: bold">/&gt;</span>
 </pre></div>
-
 
 
 <script type="text/javascript" src="../dist/predictive-ui.js"></script>
