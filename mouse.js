@@ -1,6 +1,11 @@
 import {
     predictionFactor,
+    predictiveTimeout
 } from './constants';
+import {
+    addHoverClass,
+    removeHoverClass
+} from './styles';
 
 const isIn = (x,y,coordinates) => 
 	x > coordinates.x && 
@@ -18,6 +23,7 @@ export const getMouseHandler = (filter, elements, callback) => {
 		coordinatesCheckers.push((x,y) => isIn(x,y,rect));
 	}
 
+  const timeoutIds = new Array(elements.length);
 
 	let globalX, 
 		globalY;
@@ -45,7 +51,14 @@ export const getMouseHandler = (filter, elements, callback) => {
 
     	for(let i = 0, l = coordinatesCheckers.length; i < l; i++){
     		if(coordinatesCheckers[i](predictX, predictY)){
-    			callback(elements[i])
+    			const element = elements[i];
+          if(!timeoutIds[i]){
+            addHoverClass(element);
+            timeoutIds[i] = setTimeout(() => {
+              removeHoverClass(element);
+              delete timeoutIds[i];
+            }, predictiveTimeout);
+          }
     		}
     	}
 

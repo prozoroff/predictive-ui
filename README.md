@@ -7,7 +7,7 @@ Predictive behavior for html elements
 
 ### Usage
 
-As usual HTML boolean attribute
+Like a regular HTML boolean attribute
 
 ```html
 <button predictive-item>Predictve button</button>

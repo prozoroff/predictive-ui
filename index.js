@@ -1,14 +1,11 @@
 import particleFilter from 'particle-filter';
 import {
-    addPredictiveHoverRules,
-    addHoverClass,
-    removeHoverClass
+    addPredictiveHoverRules
     } from './styles';
 import {
     particlesNumber,
     distributionSize,
-    predictiveTimeout,
-    predictiveClass
+    predictiveAttribute
 } from './constants';
 import {
     getMouseHandler
@@ -17,11 +14,8 @@ import {
 
 addPredictiveHoverRules();
 
-const elements = document.querySelectorAll(`[${predictiveClass}]`);;
+const elements = document.querySelectorAll(`[${predictiveAttribute}]`);;
 const filter = new particleFilter(particlesNumber, 2, distributionSize);
-const mouseHandler = getMouseHandler(filter, elements, element => {
-    addHoverClass(element);
-    setTimeout(() => removeHoverClass(element), predictiveTimeout);
-});
+const mouseHandler = getMouseHandler(filter, elements);
 
 document.body.onmousemove = mouseHandler;
