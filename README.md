@@ -12,3 +12,7 @@ Like a regular HTML boolean attribute
 ```html
 <button predictive-item>Predictve button</button>
 ```
+
+### Demo
+
+[Live demo on Codepen](https://codepen.io/alexprozoroff/pen/LBGXQW)
