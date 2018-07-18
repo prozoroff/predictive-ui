@@ -1,10 +1,11 @@
-import particleFilter from 'particle-filter';
+import {
+    getParticleFilter,
+    getMovingAverageFilter
+    } from './filters';
 import {
     addPredictiveHoverRules
     } from './styles';
 import {
-    particlesNumber,
-    distributionSize,
     predictiveAttribute
 } from './constants';
 import {
@@ -14,8 +15,7 @@ import {
 
 addPredictiveHoverRules();
 
+const filter = getParticleFilter();
 const elements = document.querySelectorAll(`[${predictiveAttribute}]`);;
-const filter = new particleFilter(particlesNumber, 2, distributionSize);
-const mouseHandler = getMouseHandler(filter, elements);
 
-document.body.onmousemove = mouseHandler;
+document.body.onmousemove = getMouseHandler(filter, elements);

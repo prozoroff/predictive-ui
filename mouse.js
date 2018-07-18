@@ -45,7 +45,7 @@ export const getMouseHandler = (filter, elements, callback) => {
 
     	filter.update([(x - globalX)*predictionFactor, (y - globalY)*predictionFactor]);
 
-		const filterState = filter.result.state,
+		const filterState = filter.state(),
 			predictX = globalX + filterState[0],
 			predictY = globalY + filterState[1];
 
