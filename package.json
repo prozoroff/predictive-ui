@@ -24,6 +24,7 @@
   },
   "homepage": "https://github.com/prozoroff/predictive-ui#readme",
   "dependencies": {
+    "neataptic": "^1.4.7",
     "particle-filter": "0.0.4",
     "webpack": "^4.16.0"
   },

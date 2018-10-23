@@ -1,0 +1,120 @@
+<!doctype html>
+<title>Example</title>
+<style>
+ * {
+   box-sizing: border-box;
+  }
+.container { 
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  height: 100vh;
+  flex-wrap: wrap;
+  } 
+.container > div {
+  display: flex;
+}
+  
+.container > div > div {
+  background: tomato;
+  width: 50%;
+  height: 50%;
+   margin: auto;
+  }
+.container > div {
+  width: 25%;
+  }
+</style>
+<div class="container">
+  <div><div></div></div>
+  <div><div></div></div>
+  <div><div></div></div>
+  <div><div></div></div>
+  <div><div></div></div>
+  <div><div></div></div>
+  <div><div></div></div>
+  <div><div></div></div>
+  <div><div></div></div>
+  <div><div></div></div>
+  <div><div></div></div>
+  <div><div></div></div>
+  <div><div></div></div>
+  <div><div></div></div>
+  <div><div></div></div>
+  <div><div></div></div>
+</div>
+<script type="text/javascript">
+  
+const _highlited = 'gold';
+const _regular = 'tomato';
+const _click = 'lime';
+
+const innerDivs = document.querySelectorAll('.container > div > div');
+const divsNumber = innerDivs.length;
+
+let currentNumber;
+let mousePositions = [];
+let report = [];
+
+document.getElementsByClassName('container')[0].onmousemove = ev => {
+  mousePositions.push([
+              Math.round(ev.clientX), 
+              Math.round(ev.clientY)
+              ]);
+}
+
+const getNewNumber = () => {
+  let result = currentNumber;
+  while(result === currentNumber){
+    result = Math.round(Math.random() * (divsNumber - 1));
+  }
+  currentNumber = result;
+  return result;
+}
+
+const highlightNext = () => {
+  innerDivs[currentNumber].style.background = _highlited;
+}
+
+const highlightClick = () => {
+  innerDivs[currentNumber].style.background = _click;
+}
+
+const highlightRegular = () => {
+  innerDivs[currentNumber].style.background = _regular;
+}
+
+let count = 0;
+
+const nextTask = () => {
+  mousePositions = [];
+  getNewNumber();
+  highlightNext();
+  const div = innerDivs[currentNumber];
+  div.onmouseenter = () => {
+    highlightClick();
+    setTimeout(() => {
+      div.onmouseenter = undefined;
+      const rect = div.getBoundingClientRect();
+      report.push({
+        target: {
+          x: Math.round(rect.left),
+          y: Math.round(rect.top),
+          width: Math.round(rect.width),
+          height: Math.round(rect.height)
+        },
+        mousePositions
+      })
+      highlightRegular();
+      if(count++ < 30){
+        nextTask();
+      } else{
+        console.log(JSON.stringify(report));
+      }
+      
+    },1000)
+  }
+}
+
+nextTask();
+</script>

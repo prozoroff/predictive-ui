@@ -7,13 +7,16 @@ import {
     removeHoverClass
 } from './styles';
 
+//11 last positions = 10 last differences
+const positionsFull = mousePositions => mousePositions.length === 11;
+
 const isIn = (x,y,coordinates) => 
 	x > coordinates.x && 
 	x < (coordinates.x + coordinates.width) && 
 	y > coordinates.y && 
 	y < (coordinates.y + coordinates.height);
 
-export const getMouseHandler = (filter, elements, callback) => {
+export const getMouseHandler = (filter, elements, predict) => {
 	
 	const coordinatesCheckers = [];
 	for(let i = 0, l = elements.length; i < l; i++){
@@ -26,7 +29,8 @@ export const getMouseHandler = (filter, elements, callback) => {
   const timeoutIds = new Array(elements.length);
 
 	let globalX, 
-		globalY;
+		globalY,
+    mousePositions = [];
 
 	return e => {
 
@@ -49,21 +53,28 @@ export const getMouseHandler = (filter, elements, callback) => {
 			predictX = globalX + filterState[0],
 			predictY = globalY + filterState[1];
 
-    	for(let i = 0, l = coordinatesCheckers.length; i < l; i++){
-    		if(coordinatesCheckers[i](predictX, predictY)){
-    			const element = elements[i];
-          if(!timeoutIds[i]){
-            addHoverClass(element);
-            timeoutIds[i] = setTimeout(() => {
-              removeHoverClass(element);
-              delete timeoutIds[i];
-            }, predictiveTimeout);
+      if(!predict || !positionsFull(mousePositions) || predict(mousePositions)){
+        for(let i = 0, l = coordinatesCheckers.length; i < l; i++){
+          if(coordinatesCheckers[i](predictX, predictY)){
+            const element = elements[i];
+            if(!timeoutIds[i]){
+              addHoverClass(element);
+              timeoutIds[i] = setTimeout(() => {
+                removeHoverClass(element);
+                delete timeoutIds[i];
+              }, predictiveTimeout);
+            }
           }
-    		}
-    	}
+        }
+      }
 
     	globalX = x;
     	globalY = y;
+
+      if(predict){
+        positionsFull(mousePositions) && mousePositions.shift();
+        mousePositions.push([x,y]);
+      }
 	}
 
 }
