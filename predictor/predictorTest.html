@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<style type="text/css">
+
+        .container { 
+            display: flex;
+            flex-direction: row;
+            margin: 60px auto;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            height: 1200px;
+            width: 1200px;
+        } 
+        .container > div {
+            display: flex;
+        }
+  
+        .container > div > div {
+            width: 200px;
+            height: 100px;
+            margin: auto;
+            position: absolute; 
+            background: #ddd;
+            color: #444;
+            display: block;
+            font: bold 16px/50px sans-serif;
+            padding: 0 25px;
+            text-align: center;
+            text-decoration: none;
+            -webkit-transition: all .25s ease;
+               -moz-transition: all .25s ease;
+                -ms-transition: all .25s ease;
+                 -o-transition: all .25s ease;
+                    transition: all .25s ease;
+            border: 0px;
+        }
+        .container > div {
+            width: 300px;
+        }
+
+       .container > div > div:hover {
+            background-color: lightgreen;
+        }
+
+
+	</style>
+</head>
+<body>
+<div class="container">
+  <div><div predictive-item></div></div>
+  <div><div predictive-item></div></div>
+  <div><div predictive-item></div></div>
+  <div><div predictive-item></div></div>
+  <div><div predictive-item></div></div>
+  <div><div predictive-item></div></div>
+  <div><div predictive-item></div></div>
+  <div><div predictive-item></div></div>
+  <div><div predictive-item></div></div>
+  <div><div predictive-item></div></div>
+  <div><div predictive-item></div></div>
+  <div><div predictive-item></div></div>
+  <div><div predictive-item></div></div>
+  <div><div predictive-item></div></div>
+  <div><div predictive-item></div></div>
+  <div><div predictive-item></div></div>
+  <div><div predictive-item></div></div>
+  <div><div predictive-item></div></div>
+  <div><div predictive-item></div></div>
+  <div><div predictive-item></div></div>
+  <div><div predictive-item></div></div>
+  <div><div predictive-item></div></div>
+  <div><div predictive-item></div></div>
+  <div><div predictive-item></div></div>
+  <div><div predictive-item></div></div>
+  <div><div predictive-item></div></div>
+  <div><div predictive-item></div></div>
+  <div><div predictive-item></div></div>
+  <div><div predictive-item></div></div>
+  <div><div predictive-item></div></div>
+  <div><div predictive-item></div></div>
+  <div><div predictive-item></div></div>
+</div>
+
+<script type="text/javascript" src="../dist/predictive-ui.js"></script>
+<script type="text/javascript">
+    
+    const _highlited = 'solid gold 5px';
+const _regular = 'none';
+const _click = 'solid lime 5px';
+
+const innerDivs = document.querySelectorAll('.container > div > div');
+const divsNumber = innerDivs.length;
+
+let currentNumber;
+
+let isSelected = false;
+let eventsUntilHover = 0;
+let errorsNumber = 0;
+let prevState = [];
+
+const isCountStarted = () => isSelected;
+const getEventsNumber = () => eventsUntilHover;
+const getErrorsNumber = () => errorsNumber;
+const getCurrentDiv = () => div;
+const startEventsCount = () => {
+  isSelected = true;
+  eventsUntilHover = 0;
+};
+const incrementEvents = () => eventsUntilHover++;
+const deselect = () => {
+  isSelected = false;
+  errorsNumber = 0;
+}
+
+
+const countErrors = () => {
+  let currentState = [];
+  for(var i = 0; i < divsNumber; i++){
+    const state = innerDivs[i].classList[0] ? 1 : 0;
+    currentState.push(state);
+    if(prevState.length && prevState[i] === 0 && state){
+      errorsNumber++;
+    }
+  }
+
+  prevState = currentState.slice(0);
+}
+
+
+document.getElementsByClassName('container')[0].onmousemove = ev => {
+
+  countErrors();
+
+  if(isCountStarted()){
+    incrementEvents();
+  } else if(getCurrentDiv().classList[0]){
+    startEventsCount();
+  }
+}
+
+const getNewNumber = () => {
+  let result = currentNumber;
+  while(result === currentNumber){
+    result = Math.round(Math.random() * (divsNumber - 1));
+  }
+  currentNumber = result;
+  return result;
+}
+
+const highlightNext = () => {
+  innerDivs[currentNumber].style.border = _highlited;
+}
+
+const highlightClick = () => {
+  innerDivs[currentNumber].style.border = _click;
+}
+
+const highlightRegular = () => {
+  innerDivs[currentNumber].style.border = _regular;
+}
+
+let count = 0;
+let div;
+
+const nextTask = () => {
+  getNewNumber();
+  highlightNext();
+  div = innerDivs[currentNumber];
+  div.onmouseenter = () => {
+    highlightClick();
+    div.onmouseenter = undefined;
+      highlightRegular();
+      if(count++ < 50){
+        nextTask();
+      } else{
+        
+      }
+    console.log('events until hover: ' + getEventsNumber());
+    console.log('errors until hover: ' + getErrorsNumber());
+    deselect();
+  }
+}
+
+nextTask();
+
+</script>
+</body>
+</html>

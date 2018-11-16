@@ -19,6 +19,6 @@ import {
 addPredictiveHoverRules();
 
 const filter = getParticleFilter();
-const elements = document.querySelectorAll(`[${predictiveAttribute}]`);;
+const elements = document.querySelectorAll(`[${predictiveAttribute}]`);
 
-document.body.onmousemove = getMouseHandler(filter, elements, /*predictAction*/);
+document.body.onmousemove = getMouseHandler(filter, elements/*, predictAction*/);

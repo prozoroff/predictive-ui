@@ -60,7 +60,6 @@ network.train(trainingData, {
   rate: 0.001,
 });
 
-
 var wrongNumber = 0,
 	falsePositive = 0,
 	falseNegative = 0;
@@ -81,18 +80,13 @@ const showResult = td => {
 	console.log(result);
 }
 
-
 for(var i in testData){
 	showResult(testData[i]);
 }
 
-
 console.log(wrongNumber * 100 / testData.length + '% ошибок');
 console.log(falseNegative * 100 / wrongNumber + '% пропуск срабатывания');
 console.log(falsePositive * 100 / wrongNumber + '% ложных срабатываний');
-
-
-
 
 fs.writeFile("network", JSON.stringify(network.toJSON()), function(err) {
     if(err) {

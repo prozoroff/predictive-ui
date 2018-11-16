@@ -7,8 +7,8 @@ import {
     removeHoverClass
 } from './styles';
 
-//11 last positions = 10 last differences
-const positionsFull = mousePositions => mousePositions.length === 11;
+//17 last positions = 16 last differences
+const positionsFull = mousePositions => mousePositions.length === 17;
 
 const isIn = (x,y,coordinates) => 
 	x > coordinates.x && 
