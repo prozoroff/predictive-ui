@@ -4,6 +4,7 @@
   "description": "Predictive behaviour for ui elements",
   "main": "index.js",
   "scripts": {
+    "prebuild": "json -I -f node_modules/neataptic/package.json -e 'this.browser={ \"fs\": false, \"child_process\": false }'",
     "build": "webpack",
     "dev": "webpack -w"
   },
@@ -24,6 +25,7 @@
   },
   "homepage": "https://github.com/prozoroff/predictive-ui#readme",
   "dependencies": {
+    "json": "^9.0.6",
     "neataptic": "^1.4.7",
     "particle-filter": "0.0.4",
     "webpack": "^4.16.0"
