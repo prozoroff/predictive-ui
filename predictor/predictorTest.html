@@ -10,7 +10,7 @@
             margin: 60px auto;
             justify-content: space-between;
             flex-wrap: wrap;
-            height: 1200px;
+            height: 700px;
             width: 1200px;
         } 
         .container > div {
@@ -19,7 +19,7 @@
   
         .container > div > div {
             width: 200px;
-            height: 100px;
+            height: 50px;
             margin: auto;
             position: absolute; 
             background: #ddd;
@@ -163,6 +163,10 @@ const highlightRegular = () => {
 
 let count = 0;
 let div;
+let report = {
+  errors: [],
+  events: []
+}
 
 const nextTask = () => {
   getNewNumber();
@@ -175,10 +179,11 @@ const nextTask = () => {
       if(count++ < 50){
         nextTask();
       } else{
-        
+        console.log('errors: ',report.errors.reduce((a,b)=>a+b,0)/report.errors.length);
+        console.log('events: ',report.events.reduce((a,b)=>a+b,0)/report.events.length);
       }
-    console.log('events until hover: ' + getEventsNumber());
-    console.log('errors until hover: ' + getErrorsNumber());
+      report.events.push(getEventsNumber());
+      report.errors.push(getErrorsNumber());
     deselect();
   }
 }
