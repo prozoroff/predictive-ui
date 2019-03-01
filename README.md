@@ -16,3 +16,5 @@ Like a regular HTML boolean attribute
 ### Demo
 
 [Live demo on Codepen](https://codepen.io/alexprozoroff/pen/LBGXQW)
+
+[Explanation (in Russian)](https://habr.com/ru/post/433564/)
